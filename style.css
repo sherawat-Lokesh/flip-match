@@ -8,6 +8,8 @@
 :root{
     --main-Background:#000C23;
     --heading-font:'Poppins', sans-serif;
+    --font-color-primary:white;
+    --newgame-button-bg: rgb(44, 162, 44);
 }
 .width{
     /* max-width: 1280px; */
@@ -23,3 +25,54 @@ img{
 body{
     background: var(--main-Background) !important;
 }
+
+
+.hidden{
+    display: none;
+}
+/* .progress-bar{
+    background-color: var(--main-background);
+    width: 100%;
+    
+} */
+.load-bar{
+
+    background:#2457b7 ;
+    /* background-color: red; */
+    width: 0%;
+    height: 10px;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+  #text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  .new-game{
+    background: var(--newgame-button-bg);
+    color: var(--font-color-primary);
+    margin: 0;
+    border: 0;
+    padding: 15px ;
+    font-size: 1rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }

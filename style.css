@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+;
 }
 :root{
     --main-Background:#000C23;
@@ -19,13 +20,16 @@ margin-top:7% ;
 display: flex;
 flex-wrap: wrap;
 }
+
+body{
+    background: var(--main-Background) !important;
+    max-width: 1600px;
+    
+}
+
 img{
     margin:0px 5px 10px;
 }
-body{
-    background: var(--main-Background) !important;
-}
-
 
 .hidden{
     display: none;
@@ -78,3 +82,7 @@ body{
     border-radius: 2px;
     font-weight: 500;
   }
+
+
+
+  

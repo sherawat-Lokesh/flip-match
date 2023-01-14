@@ -60,8 +60,8 @@ function topImgGradiantClick(){
                         if(a.name!==b.name){
                             // console.log('matched')
                                 setTimeout(()=>{
-                                    document.getElementById(`${+checkIfMatch[0].id}`).src=`playing cards/hidden.svg`;
-                                    document.getElementById(`${+checkIfMatch[1].id}`).src=`playing cards/hidden.svg`;
+                                    document.getElementById(`${+checkIfMatch[0].id}`).src=`playing cards/hidden.jpeg`;
+                                    document.getElementById(`${+checkIfMatch[1].id}`).src=`playing cards/hidden.jpeg`;
                                     checkIfMatch=[]
                                 },200)
         

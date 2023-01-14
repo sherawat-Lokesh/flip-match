@@ -41,6 +41,8 @@ body{
     /* background-color: red; */
     width: 0%;
     height: 10px;
+    transition: width 21s linear;
+
 }
 
 #overlay {

@@ -41,77 +41,86 @@ function loadTopImg() {
 loadTopImg();
 
 function newGame() {
+
   // console.log('function is running')
   score = 0;
   checkIfMatch = [];
   initial = 0;
   overlay.classList.add("hidden");
+  bar.style.transition = "1s";
   bar.style.width = 0 + "%";
   removeAllLeftImage();
   loadTopImg();
   topImgGradiantClick();
 }
 
-function topImgGradiantClick() {
-  const img2 = img.sort((a, b) => 0.5 - Math.random());
-  const allImg = document.querySelectorAll(".flip");
+let img2
 
+function topImgGradiantClick() {
+  const img3 = img.sort((a,b) => 0.5 - Math.random());
+  const imgX = img3.sort((a,b) => 0.5 - Math.random());
+  const allImg = document.querySelectorAll(".flip");
+img2 = imgX
   allImg.forEach((element) => {
-    run(element);
+
+    // console.log(checkIfMatch)
+    element.addEventListener("click", f);
   });
 
-  function run(element) {
-    // console.log(checkIfMatch)
-    element.addEventListener("click", (e) => {
-      // console.log(img2[e.target.id])
-      checkIfMatch.push({ name: img2[e.target.id], id: e.target.id });
-
-      e.target.src = img2[e.target.id];
-
-      if (checkIfMatch.length === 2) {
-        let a = checkIfMatch[0],
-          b = checkIfMatch[1];
-        if (a.name !== b.name) {
-          // console.log('matched')
-          setTimeout(() => {
-            document.getElementById(
-              `${+checkIfMatch[0].id}`
-            ).src = `playing cards/hidden.jpeg`;
-            document.getElementById(
-              `${+checkIfMatch[1].id}`
-            ).src = `playing cards/hidden.jpeg`;
-            checkIfMatch = [];
-          }, 200);
-        }
-        if (a.name === b.name) {
-          checkIfMatch.forEach((elemen, i) => {
-            document
-              .getElementById(`${+checkIfMatch[i].id}`)
-              .removeEventListener("click", run);
-          });
-
-          score += 1;
-          // console.log(score)
+  function f(event){
+    console.log(img2[event.target.id])
+    checkIfMatch.push({ name: img2[event.target.id], id: event.target.id });
+  
+    event.target.src = img2[event.target.id];
+  
+    if (checkIfMatch.length === 2) {
+      let a = checkIfMatch[0],
+        b = checkIfMatch[1];
+      if (a.name !== b.name) {
+        console.log('un-matched')
+        setTimeout(() => {
+          document.getElementById(
+            `${+checkIfMatch[0].id}`
+          ).src = `playing cards/hidden.jpeg`;
+          document.getElementById(
+            `${+checkIfMatch[1].id}`
+          ).src = `playing cards/hidden.jpeg`;
           checkIfMatch = [];
-        }
-        if (score >= 6) {
-          overlay.classList.remove("hidden");
-          clearInterval(id);
-          whatHappend.innerHTML = "You Win";
-          new_game.addEventListener("click", () => {
-            newGame();
-          });
-        }
+        }, 200);
       }
-
-      runProgressBar();
-    });
+      if (a.name === b.name) {
+        checkIfMatch.forEach((element) => {
+          document
+            .getElementById(element.id)
+            .removeEventListener("click", f);
+        });
+  
+        score += 1;
+        console.log(score)
+        checkIfMatch = [];
+      }
+      if (score >= 6) {
+        overlay.classList.remove("hidden");
+        clearInterval(id);
+        whatHappend.innerHTML = "You Win";
+        new_game.addEventListener("click", () => {
+          newGame();
+        });
+      }
+    }
+  
+    runProgressBar();
   }
+
 }
 topImgGradiantClick();
 
+
 function runProgressBar() {
+  
   if (initial === 0) {
+    bar.style.transition ="width 21s linear";
+    bar.style.width = "100%";
     initial = 1;
     let width = 0;
     id = setInterval(bars, 1000);
@@ -120,12 +129,12 @@ function runProgressBar() {
         clearInterval(id);
         initial = 0;
         overlay.classList.remove("hidden");
+        
         new_game.addEventListener("click", () => {
           newGame();
         });
       } else {
         width += 5;
-        bar.style.width = width + "%";
       }
     }
   }

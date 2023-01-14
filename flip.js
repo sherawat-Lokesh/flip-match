@@ -13,7 +13,7 @@ const bar=document.querySelector('.load-bar')
 
 function createElement(i){
     const hiddenIMg=document.createElement('img');
-          hiddenIMg.src=`playing cards/hidden.svg`;
+          hiddenIMg.src=`playing cards/hidden.jpeg`;
           hiddenIMg.classList.add('flip')
           hiddenIMg.id=i
 

@@ -129,6 +129,7 @@ function runProgressBar() {
         clearInterval(id);
         initial = 0;
         overlay.classList.remove("hidden");
+        whatHappend.innerHTML = "Game Over";
         
         new_game.addEventListener("click", () => {
           newGame();
